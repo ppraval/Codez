@@ -1,6 +1,6 @@
 #include <stdio.h>
 
-int sine(float x, int n)
+float sine(float x, int n)
 {
     float sum, current_value;
     sum = x;
@@ -20,7 +20,7 @@ int main()
     int n;
     scanf("%f", &x);
     scanf("%d", &n);
-    x = x*(3.14 / 180);
+    x = x*(3.1415 / 180);
     printf("%.4f", sine(x, n));
     return 0;
 }
