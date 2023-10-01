@@ -12,7 +12,7 @@ int printn(int n, int m)
     {
         printf("%d ", n);
     }
-    return printn(n + 1);
+    return printn(n + 1, m);
 }
 
 
