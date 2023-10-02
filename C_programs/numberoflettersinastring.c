@@ -4,14 +4,14 @@
 
 int main()
 {
-    char input[100];
+    char input[MAX];
     char key;
-    int count = 0, n = MAX;
-    fgets(input, n, stdin);
+    int count = 0;
+    fgets(input, MAX, stdin);
     scanf("%c", &key);
-    for(int i = 0; i < n; i++)
+    for(int i = 0; i < MAX; i++)
     {
-        if (input[i] ==  key || input[i] == key + 32 || input[i] == key - 32)
+        if (input[i] ==  key || input[i] == key + 32 || input == key - 32)
         {
             count++;
         }
