@@ -50,8 +50,6 @@ int heapsort(int arr[], int n)
     return 0;
 }
 
-
-
 int main()
 {
     int arr[10] = {1, 2, 342, 5, 31, 324, 3 ,235, 46};
@@ -63,6 +61,5 @@ int main()
     {
         printf("%d ", arr[i]);
     }
-
     return 0;
 }
