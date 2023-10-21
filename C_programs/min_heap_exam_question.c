@@ -64,7 +64,7 @@ void printArray(int arr[], int n)
 
 int changeValue(int arr[], int i)
 {
-    int parent = i / 2;
+    int parent = (i - 1) / 2;
     if (parent > 0 && arr[i] < arr[parent])
     {
         int temp = arr[i];
@@ -111,6 +111,7 @@ int main()
     printArray(arr, n);
     printf("\n");
 
+    //for kth smallest term in the heap
     for(int i = 0; i < k; i++)
     {
         a = heap_extract_min(arr, &n);
