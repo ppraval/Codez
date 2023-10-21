@@ -3,8 +3,8 @@
 int min_heapify(int arr[], int n, int i)
 {
     int smallest = i;
-    int left = 2 * i;
-    int right = 2 * i + 1;
+    int left = 2 * i + 1;
+    int right = 2 * i + 2;
     if(left < n && arr[left] < arr[smallest])
     {
         smallest = left;
@@ -18,14 +18,14 @@ int min_heapify(int arr[], int n, int i)
         int temp = arr[i];
         arr[i] = arr[smallest];
         arr[smallest] = temp;
-        min_heapify(arr, n, i);
+        min_heapify(arr, n, smallest);
     }
     return 0;
 }
 
 int build_min_heap(int arr[], int n)
 {
-    for (int i = ((n)/2) - 1; i >= 0; i--)
+    for (int i = n/2 - 1; i >= 0; i--)
     {
         min_heapify(arr, n, i);
     }
@@ -49,7 +49,7 @@ int heap_extract_min(int arr[], int *n)
         arr[0] = arr[*n - 1];
         arr[*n - 1] = temp;
         (*n)--;
-        min_heapify(arr, *n, 1);
+        min_heapify(arr, *n-1, 0);
         return min;
     }
 }
@@ -65,7 +65,7 @@ void printArray(int arr[], int n)
 int changeValue(int arr[], int i)
 {
     int parent = i / 2;
-    if ( parent > 0 && arr[i] < arr[parent])
+    if (parent > 0 && arr[i] < arr[parent])
     {
         int temp = arr[i];
         arr[i] = arr[parent];
@@ -80,14 +80,15 @@ int insertElement(int arr[], int key, int *n)
     arr[*n] = key;
     (*n)++;
     changeValue(arr, ((*n) - 1));
+    build_min_heap(arr, *n);
     return 0;
 }
 
 int main()
 {
-    int n;
+    int n, a, k = 3;
     scanf("%d", &n);
-    int arr[n];
+    int arr[100];
     for(int i = 0; i < n; i++)
     {
         scanf("%d", &arr[i]);
@@ -100,14 +101,20 @@ int main()
     printf("%d\n", heap_minimum(arr));
 
     printf("%d\n", heap_extract_min(arr, &n));
+    
 
     printArray(arr, n);
     printf("\n");
 
-    insertElement(arr, 6, &n);
+    insertElement(arr, 1, &n);
 
     printArray(arr, n);
-    
+    printf("\n");
+
+    for(int i = 0; i < k; i++)
+    {
+        a = heap_extract_min(arr, &n);
+    }
+    printf("%d", a);
     return 0;
 }
-

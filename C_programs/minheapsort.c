@@ -25,7 +25,7 @@ int heapify(int arr[], int n, int i)
     return 0;
 }
 
-int build_max_heap(int arr[], int n)
+int build_min_heap(int arr[], int n)
 {
     int temp;
     for(int i = n / 2 - 1; i >= 0; i--)
@@ -38,7 +38,7 @@ int build_max_heap(int arr[], int n)
 int heapsort(int arr[], int n)
 {
     int temp;
-    build_max_heap(arr, n);
+    build_min_heap(arr, n);
     for (int i = n - 1; i >= 0; i--)
     {
         temp = arr[0];
