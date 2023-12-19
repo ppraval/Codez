@@ -1,0 +1,1 @@
+cout << "\nFinal average is: " << sum / n << "\n";
