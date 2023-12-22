@@ -1,1 +1,2 @@
-cout << "\nFinal average is: " << sum / n << "\n";
+nums[j++] = nums[i];
+        count++;
