@@ -11,6 +11,8 @@ struct ListNode {
 
 int main()
 {
+    ListNode* l1;
+    ListNode* l2;
     ListNode* dummy = new ListNode();
     ListNode* temp = dummy;
     int carry=0;
@@ -28,8 +30,8 @@ int main()
             l2 = l2->next;
         }
         sum += carry;
-        carry = sum/10;
-        ListNode* new_node = new ListNode(sum%10);
+        carry = sum / 10;
+        ListNode* new_node = new ListNode(sum % 10);
         temp->next = new_node;
         temp = temp->next;
     }
