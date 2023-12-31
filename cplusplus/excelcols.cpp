@@ -4,6 +4,7 @@ using namespace std;
 int main()
 {
     // LESGOOOO I READ THE QUESTION WRONG THIS IS EPIC MORE MARKS ARE GONE AHAHAHAHHAHAHAH
+    // NVM THIS WAS USED IN ANOTHER QUESTION I AM NOT SCHIZO
     // string s = "ZY";
     // int val = 0;
     // for(int i = 0; i < s.length(); i++)
