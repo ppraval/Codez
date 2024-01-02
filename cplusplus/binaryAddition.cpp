@@ -12,7 +12,7 @@ int main()
 {
     string a = "11";
     string b = "1";
-    int num1 = binaryToDecimal(a);
+    int num1 = binaryToDecimal(a); //This kind of coverting to string and conveting back to interger solutions dont work for all test cases in websites cuz they suck
     int num2 = binaryToDecimal(b);
     bitset<32> bits(num1 + num2);
     string binary_string = bits.to_string();
