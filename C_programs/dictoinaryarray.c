@@ -86,11 +86,9 @@ int main()
     dict = insert(dict, "avacado");
     dict = insert(dict, "bengal");
     dict = insert(dict, "kakinda");
-    //To make this not work uncomment the below code
     dict = insert(dict, "tokyo");
     dict = insert(dict, "donkey");
-    // and comment the following line
-    // dict = insert(dict, "tokyo");
+    dict = insert(dict, "tokyo");
     for(int i = 0; i < dict->size + 1; i++)
     {
         puts(dict->w[i]);
