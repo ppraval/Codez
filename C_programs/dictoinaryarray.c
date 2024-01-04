@@ -18,19 +18,37 @@ word insert(word dict, char* w)
         dict->size++;
         return dict;
     }
-    int i = dict->size;
-    if(strcmp(w, dict->w[i]) <= 0)
+    for(int i = 0; i < dict->size + 1; i++)
     {
-        dict->w[i + 1] = dict->w[i];
-        dict->w[i] = w;
-        dict->size++;
-        return dict;
-    }
-    else
-    {
-        dict->w[i + 1] = w;
-        dict->size++;
-        return dict;
+        if(i == dict->size)
+        {
+            if(strcmp(w, dict->w[i]) <= 0)
+            {
+                dict->w[i + 1] = dict->w[i];
+                dict->w[i] = w;
+                dict->size++;
+                return dict;
+            }
+            else
+            {
+                dict->w[i + 1] = w;
+                dict->size++;
+                return dict;
+            }
+        }
+        else
+        {
+            if(strcmp(w, dict->w[i]) <= 0 && strcmp(w, dict->w[i + 1]) <= 0)
+            {
+                for(int j = dict->size; j >= i; j--)
+                {
+                    dict->w[j + 1] = dict->w[j];
+                }
+                dict->w[i] = w;
+                dict->size++;
+                return dict;
+            }
+        }
     }
 }
 
@@ -69,10 +87,10 @@ int main()
     dict = insert(dict, "bengal");
     dict = insert(dict, "kakinda");
     //To make this not work uncomment the below code
-    //dict = insert(dict, "tokyo");
+    dict = insert(dict, "tokyo");
     dict = insert(dict, "donkey");
     // and comment the following line
-    dict = insert(dict, "tokyo");
+    // dict = insert(dict, "tokyo");
     for(int i = 0; i < dict->size + 1; i++)
     {
         puts(dict->w[i]);
