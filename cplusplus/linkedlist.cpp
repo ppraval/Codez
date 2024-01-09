@@ -7,25 +7,35 @@ struct ListNode {
     ListNode(int x) : val(x), next(NULL) {};
 };
 
-typedef ListNode *ListNode;
+typedef ListNode* Node;
 
-ListNode insertNode(ListNode head, int val)
+// class Node
+// {
+//     public:
+//         int val;
+//         Node* next;
+//         Node(int val) : val(val), 
+// }
+
+
+
+Node insertNode(Node head, int val)
 {
-    ListNode new_node = new ListNode(val);
+    Node new_node = new ListNode(val);
     if(head == NULL)
         return new_node;
-    ListNode traverse_node = head;
+    Node traverse_node = head;
     while(traverse_node->next != NULL)
     {
         traverse_node = traverse_node->next;
     }
     traverse_node->next = new_node;
-    return new_node;
+    return head;
 }
 
-void printList(ListNode head)
+void printList(Node head)
 {
-    ListNode traverse_node = head;
+    Node traverse_node = head;
     if(head == NULL)
     {
         cout << -1 << endl;
@@ -41,12 +51,12 @@ void printList(ListNode head)
 }
 int main()
 {
-    ListNode head = NULL;
+    Node head = NULL;
     head = insertNode(head, 1);
-    head = insertNode(head, 1);
-    head = insertNode(head, 1);
-    head = insertNode(head, 1);
-    head = insertNode(head, 1);
-    head = insertNode(head, 1);
+    head = insertNode(head, 2);
+    head = insertNode(head, 3);
+    head = insertNode(head, 4);
+    head = insertNode(head, 5);
+    head = insertNode(head, 6);
     printList(head);
 }
