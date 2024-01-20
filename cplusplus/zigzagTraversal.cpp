@@ -58,17 +58,6 @@ vector<vector<int>> zigzagTraversal(node root)
     return ans;
 }
 
-void inorderTraversal(node root)
-{
-    if(root == NULL)
-    {
-        return;
-    }
-    inorderTraversal(root->left);
-    cout << root->val << " ";
-    inorderTraversal(root->right);
-}
-
 int main()
 {
     node root = createSampleTree();
