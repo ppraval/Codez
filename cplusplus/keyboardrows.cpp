@@ -7,7 +7,7 @@ int main()
     string s1="qwertyuiop";
     string s2="asdfghjkl";
     string s3="zxcvbnm";
-    vector<string res;
+    vector<string, int> res;
     map<char, int> mp;
     for(auto &it : s1)
     mp[it] = 1;
