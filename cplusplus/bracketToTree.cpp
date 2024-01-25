@@ -27,6 +27,7 @@ node treeFromParenthesis(string s, int& i)
     node root = NULL;
     if(val > 0)
         root = new TreeNode(val);
+    
     if(i < s.length() && s[i] == '(')
     {
         i++;
@@ -46,8 +47,9 @@ node treeFromParenthesis(string s, int& i)
     if(i < s.length() && s[i] == ')')
     {
         i++;
-    }
         return root;
+    }
+    return root;
 }
 
 void inorderTraversal(node root)
@@ -63,7 +65,7 @@ void inorderTraversal(node root)
 
 int main()
 {
-    string s = "7(5(2)(6))(9()(10))";
+    string s = "7(5()())(9()())";
     int i = 0;
     node root = NULL;
     root = treeFromParenthesis(s, i);
