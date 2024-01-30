@@ -25,9 +25,7 @@ int main()
             s.push(res);
         }
         else
-        {
             s.push(stoi(tokens[i]));
-        }
     }
     cout << s.top() << endl;
     return 0;
