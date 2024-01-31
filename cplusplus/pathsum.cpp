@@ -53,7 +53,8 @@ int main()
 {
     node root = createTree2();
     int flag = 0;
-    inorderTraversal(root, 22, 0, flag);
+    int targetsum = 1;
+    inorderTraversal(root, targetsum, 0, flag);
     cout << endl;
     if(flag == 1)
     {
