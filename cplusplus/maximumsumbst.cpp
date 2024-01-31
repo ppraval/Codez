@@ -29,9 +29,7 @@ node createTree1()
 void inorderTraversal(node root)
 {
     if(root == NULL)
-    {
         return;
-    }
     inorderTraversal(root->left);
     cout << root->val << " ";
     inorderTraversal(root->right);
