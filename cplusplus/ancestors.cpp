@@ -11,7 +11,7 @@ struct TreeNode
     TreeNode(int x, TreeNode *left, TreeNode *right) : val(x), left(left), right(right) {}
 };
 
-typedef TreeNode *node;
+typedef TreeNode*node;
 
 node createTree1()
 {
