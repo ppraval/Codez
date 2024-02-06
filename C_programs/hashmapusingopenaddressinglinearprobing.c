@@ -97,7 +97,6 @@ void delete(hash_table table, int key)
 {
     if(table == NULL)
     {
-        printf("Do we see this?\n");
         printf("-1\n");
         return;
     }
@@ -121,6 +120,22 @@ void delete(hash_table table, int key)
     }
 }
 
+void print_hash_table(hash_table table) 
+{
+    if (table == NULL) 
+    {
+        return;
+    }
+    for (int i = 0; i < table->max_size; i++) 
+    {
+        if (table->arr[i].key != -1) 
+        {
+            printf("Key: %d, Value: %d\n", table->arr[i].key, table->arr[i].val);
+        }
+    }
+    printf("\n");
+}
+
 int main()
 {
     hash_table table = createHashTable(100);
@@ -142,9 +157,10 @@ int main()
     printf("Value for key 110: %d\n", search(table, 110)); 
     printf("Value for key 50: %d\n", search(table, 50)); 
     
-    delete(table, 10);
-    printf("Value for key 10: %d\n", search(table, 10));
+    // delete(table, 10);
+    // printf("Value for key 10: %d\n", search(table, 10));
 
+    print_hash_table(table);
 
     return 0;
 
