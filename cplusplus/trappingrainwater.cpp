@@ -9,7 +9,8 @@ int main()
         return 0;
     int ans = 0;
     int i = 1, j = n - 2;
-    int left = height[0] , right = height[n - 1];
+    int left = height[0];
+    int right = height[n - 1];
     while(i <= j)
     {
         if(left < right)
