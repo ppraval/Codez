@@ -20,7 +20,7 @@ int  main()
     {
         if(k > v[i])
         {
-            k-=v[i];
+            k -= v[i];
             v[i]=0;
         }
         else
