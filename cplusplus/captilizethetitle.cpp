@@ -4,7 +4,7 @@ using namespace std;
 
 int main()
 {
-    string s = "capiTalIze tHe titLe";
+    string s = "capiTalIze THe titLe";
     transform(s.begin(), s.end(), begin(s), :: tolower);
     string ans = "";
     stringstream ss(s);
