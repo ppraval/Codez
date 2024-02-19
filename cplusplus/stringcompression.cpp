@@ -58,7 +58,6 @@ int main()
             cout << "previous after change is : " << previous << "\n";
         }
     }
-    
     for(int i = 0; i < output.size(); i++)
     {
         cout << output[i] << " ";
