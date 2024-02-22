@@ -5,8 +5,8 @@ int main()
 {
     int n = 3;
     vector<vector<int>> trust = {{1,3}, {2,3}, {3,1}};
-    vector<int>arr1(n+1);
-    vector<int>arr2(n+1);
+    vector<int> arr1(n+1);
+    vector<int> arr2(n+1);
     for(int i = 0; i < trust.size(); i++)
     {
         arr1[trust[i][0]]++;   
