@@ -56,6 +56,10 @@ int heightOfTree(node root)
     return max(left, right) + 1;
 }
 
+
+// does not work properly AHAHHAHAHAHAH
+
+
 int main()
 {
     node root = createSampleTree();
