@@ -36,6 +36,7 @@ int main()
         else
             high = mid - 1;
     }
+    
     cout << -1 << endl;
     return -1;
 }
