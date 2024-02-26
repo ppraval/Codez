@@ -16,9 +16,7 @@ int main()
         if(s[i] == ' ' && flag == 0) 
             continue;
         if(s[i] != ' ' && flag == 0) 
-        {
             flag = 1;
-        }
         else if(s[i] == ' ' && flag == 1) 
         {
             flag = 0;
