@@ -7,12 +7,10 @@ int main()
     int k = 6;
     float sum = 0;
     float average = INT_MAX * -1, current_average = 0;
-    
     if(nums.size() == 1)
     {
         return nums[0];
     }
-    
     sum = accumulate(nums.begin(), nums.begin() + k, 0);
     current_average = sum / k;
     cout << "The sum is : " << sum << "\n";
