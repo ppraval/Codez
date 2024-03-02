@@ -4,7 +4,7 @@ using namespace std;
 int main()
 {
     int n = 2;
-    vector<int> nums;
+    vector<int> nums(n);
     int sum = 0;
     for(int i = 0; i < n; i++)
     {
