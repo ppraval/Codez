@@ -14,9 +14,7 @@ int main()
             sum += nums[i];
         }
         else
-        {
             nums.push_back(-1 * sum);
-        }
     }
     for(int i : nums)
         cout << i << " ";
