@@ -6,7 +6,7 @@ int main()
 {
     vector<int> nums1 = {1,2,3};
     vector<int> nums2 = {2, 4};
-
+    // Scuffed code that does not work for all conditions at all and i scammed the correct code
     unordered_map<int, int> mp;
     for(int i : nums1)
     {
