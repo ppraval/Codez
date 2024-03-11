@@ -18,7 +18,6 @@ int main()
             mp[c]++;
         }
     }
-    
     for (char c : order) 
     {
         ans.append(mp[c], c);
