@@ -28,11 +28,6 @@ node createTree()
     return new_node;
 }
 
-// node createAnotherTree()
-// {
-//     node new_node = new TreeNode();
-// }
-
 void inorderTraversal(node root)
 {
     if(root == NULL)
