@@ -31,6 +31,45 @@ int numberOfConnectedComponents(int n, vector<vector<int>> adj_list)
     return count;
 }
 
+void apdfs(vector<vector<int>> adj_list, int v, vector<bool>& visited, int deleted)
+{
+    visited[v] = true;
+    for(int i = 0; i < adj_list[v].size(); i++)
+    {
+        if(adj_list[v][i] != deleted)
+        {
+            if(visited[adj_list[v][i]] == false)
+                apdfs(adj_list, adj_list[v][i], visited, deleted);
+        }
+    }
+}
+
+int numberOfArticulatedPoints(int n, vector<vector<int>> adj_list, int x)
+{
+    int count = 0;
+    for(int i = 0; i < n; i++)
+    {
+        vector<bool> visited (n, false);
+        int components = 0;
+        for(int j = 0; j < n; j++)
+        {
+            if(i != j)
+            {
+                if(visited[j] == false)
+                {
+                    components++;
+                    apdfs(adj_list, j, visited, i);
+                }        
+            }
+        }
+        if(components > x)
+        {
+            count++;
+        }        
+    }
+    return count;
+}
+
 int main()
 {
     int vertices = 8;
@@ -57,8 +96,8 @@ int main()
     addEdge(adj_list, 7, 6);
     addEdge(adj_list, 7, 8);
 
-
-    int n = numberOfConnectedComponents(vertices, adj_list);
+    int components = numberOfConnectedComponents(vertices, adj_list);
+    int n = numberOfArticulatedPoints(vertices, adj_list, components);
     cout << n << endl;
     return 0;
 }

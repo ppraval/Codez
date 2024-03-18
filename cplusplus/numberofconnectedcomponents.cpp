@@ -9,7 +9,6 @@ void addEdge(vector<vector<int>>& adj_list, int u, int v)
 void dfs(vector<vector<int>> adj_list, int v, vector<bool>& visited)
 {
     visited[v] = true;
-    // cout << v << " ";
     for(int i = 0; i < adj_list[v].size(); i++)
     {
         if(visited[adj_list[v][i]] == false)
