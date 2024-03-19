@@ -18,7 +18,6 @@ int dfs(vector<vector<int>> adj_list, int v, vector<bool>& visited, int parent)
                 return 1;
             }
         }
-
         else if(adj_list[v][i] != parent)
         {
             return 1;
