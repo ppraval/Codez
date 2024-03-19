@@ -50,28 +50,34 @@ void isTree(vector<vector<int>> adj_list, int vertices)
 
 int main()
 {
-    int vertices = 6;
+    int vertices = 5;
     vector<vector<int>> adj_list(vertices);
     vector<bool> visited (vertices, false);
-    addEdge(adj_list, 0, 1);
-    addEdge(adj_list, 0, 3);
-    addEdge(adj_list, 0, 5);
+    // addEdge(adj_list, 0, 1);
+    // addEdge(adj_list, 0, 3);
+    // addEdge(adj_list, 0, 5);
+
+    // addEdge(adj_list, 1, 0);
+    // addEdge(adj_list, 1, 2);
+    // addEdge(adj_list, 1, 5);
+
+    // addEdge(adj_list, 2, 1);
+    // addEdge(adj_list, 2, 3);
+    // addEdge(adj_list, 2, 4);
+
+    // addEdge(adj_list, 3, 0);
+    // addEdge(adj_list, 3, 2);
+
+    // addEdge(adj_list, 4, 2);
+
+    // addEdge(adj_list, 5, 0);
+    // addEdge(adj_list, 5, 1);
 
     addEdge(adj_list, 1, 0);
-    addEdge(adj_list, 1, 2);
-    addEdge(adj_list, 1, 5);
-
-    addEdge(adj_list, 2, 1);
-    addEdge(adj_list, 2, 3);
-    addEdge(adj_list, 2, 4);
-
-    addEdge(adj_list, 3, 0);
-    addEdge(adj_list, 3, 2);
-
-    addEdge(adj_list, 4, 2);
-
-    addEdge(adj_list, 5, 0);
-    addEdge(adj_list, 5, 1);
+    addEdge(adj_list, 0, 1);
+    addEdge(adj_list, 0, 2);
+    addEdge(adj_list, 0, 3);
+    addEdge(adj_list, 3, 4);
 
     cout << "To check if the tree is a graph is a tree or not" << endl;
     isTree(adj_list, vertices);
