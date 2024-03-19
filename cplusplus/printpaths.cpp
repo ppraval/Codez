@@ -60,14 +60,6 @@ int main()
     addEdge(adj_list, 5, 0);
     addEdge(adj_list, 5, 1);
 
-
-    // addEdge(adj_list, 0, 1);
-    // addEdge(adj_list, 0, 2);
-    // addEdge(adj_list, 1, 2);
-    // addEdge(adj_list, 2, 0);
-    // addEdge(adj_list, 2, 3);
-    // addEdge(adj_list, 3, 3);
-
     cout << "the path from node 1 to 4 is/are" << endl;
     printPath(adj_list, 0, 1, vertices);
     return 0;
