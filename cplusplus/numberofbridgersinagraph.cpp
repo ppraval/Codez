@@ -3,7 +3,7 @@ using namespace std;
 
 void addEdge(vector<vector<int>>& adj_list, int u, int v)
 {
-    adj_list[u].push_back(v);
+    adj_list[u - 1].push_back(v - 1);
 }
 
 void dfs(int v, vector<vector<int>>& adj_list, vector<bool>& visited, vector<int>& disc, vector<int>& low, int parent, int& time, int& count)
@@ -59,11 +59,12 @@ int main()
 {
     int vertices = 5;
     vector<vector<int>> adj_list(vertices);
-    addEdge(adj_list, 0, 2);
-    addEdge(adj_list, 0, 3);
-    addEdge(adj_list, 1, 0);
+    addEdge(adj_list, 1, 2);
     addEdge(adj_list, 2, 1);
     addEdge(adj_list, 3, 4);
+    addEdge(adj_list, 4, 3);
+    addEdge(adj_list, 4, 5);
+    addEdge(adj_list, 5, 4);
 
     noOfBridges(adj_list, vertices);
     return 0;
