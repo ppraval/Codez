@@ -54,8 +54,16 @@ void bfs(vector<vector<int>>& adj_matrix, int vertices)
 
 int main()
 {
-    int vertices = 6;
-    vector<vector<int>> adj_matix = {{0, 1, 1, 1, 0, 0}, {0, 0, 0, 0, 0, 0}, {0, 0, 0, 0, 1, 0}, {0, 0, 1, 0, 0, 0}, {0, 0, 0, 1, 0, 1}, {0, 0, 0, 0, 0, 0}};
-    bfs(adj_matix, vertices);
+    int vertices;
+    cin >> vertices;
+    vector<vector<int>> adj_matrix (vertices, vector<int> (vertices, 0));
+    for(int i = 0; i < vertices; i++)
+    {
+        for(int j = 0; j < vertices; j++)
+        {
+            cin >> adj_matrix[i][j];
+        }
+    }
+    bfs(adj_matrix, vertices);
     return 0;
 }
