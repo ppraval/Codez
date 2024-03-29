@@ -10,6 +10,8 @@
             int n;
             cin >> n;
             vector<int> arr(n);
+            int sum = 0;
+
             for(auto &a : arr)
                 cin >> a;
 
@@ -23,7 +25,7 @@
                     count++;
                     j--;
                 }
-                else if(arr[j] + arr[i] == 4)
+                else if(sum == 4)
                 {
                     count++;
                     i++;
@@ -31,7 +33,11 @@
                 }
                 else
                 {
-                    count++;
+                    sum += arr[i] + arr[j];
+                    if(sum > 4)
+                    {
+                        
+                    }
                     j--;
                 }
             }
