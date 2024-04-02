@@ -46,7 +46,7 @@ void primsMST(vector<vector<int>> adj_matrix, int vertices, int vertex)
     vector<int> path;
     
     for(int i = 0; i < vertices; i++)
-    {
+    {   
         key[i] = INT_MAX;
         curr_mst[i] = false;
     }
