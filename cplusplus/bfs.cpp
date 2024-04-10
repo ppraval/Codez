@@ -17,6 +17,7 @@ void bfs(vector<vector<int>>& adj_list, int start, vector<bool>& visited)
         int current = q.front();
         q.pop();
         cout << current << " ";
+        
         for(int neighbour : adj_list[current])
         {
             if(visited[neighbour] == false)
