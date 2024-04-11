@@ -19,16 +19,16 @@ void listToMatrix(int vertices, vector<vector<int>> adj_list, vector<vector<int>
         }
     }
 
-    // cout << "The final list is = " << endl;
+    cout << "The final list is = " << endl;
     
-    // for(int i = 0; i < vertices; i++)
-    // {
-    //     for(int j = 0; j < vertices; j++)
-    //     {
-    //         cout << adj_matrix[i][j] << " ";
-    //     }
-    //     cout << endl;
-    // }
+    for(int i = 0; i < vertices; i++)
+    {
+        for(int j = 0; j < vertices; j++)
+        {
+            cout << adj_matrix[i][j] << " ";
+        }
+        cout << endl;
+    }
 }
 
 
