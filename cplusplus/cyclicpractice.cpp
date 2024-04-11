@@ -51,18 +51,45 @@ void bfs(vector<vector<int>>& adj_matrix, int vertices)
     }
 }
 
-int main()
+int isCyclic(int vertices, vector<vector<int>> list, vector<bool>& visited, int v, int parent)
 {
-    int vertices;
-    cin >> vertices;
-    vector<vector<int>> adj_matrix (vertices, vector<int> (vertices, 0));
-    for(int i = 0; i < vertices; i++)
+    visited[v] = true;
+    for(int i : list[v])
     {
-        for(int j = 0; j < vertices; j++)
+        if(visited[i] == false)
         {
-            cin >> adj_matrix[i][j];
+            if(isCyclic(vertices, list, visited, i, v))
+            {
+                return 1;
+            }
+        }
+        else if(i != parent)
+        {
+            return 1;
         }
     }
-    bfs(adj_matrix, vertices);
+    return 0;
+}
+
+
+int main()
+{
+    int vertices =  5;
+    vector<bool> visited(vertices, false);
+    vector<vector<int>> graph = {
+        {1},
+        {0, 2, 4},
+        {1, 3},
+        {2},
+        {1, 3}
+    };
+    if(isCyclic(vertices, graph, visited, 0, -1))
+    {
+        cout << 1 << endl;
+    }
+    else
+    {
+        cout << 0 << endl;
+    }
     return 0;
 }
