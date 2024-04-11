@@ -107,7 +107,7 @@ int main()
     root = insertAVL(root, 20); 
     root = insertAVL(root, 30); 
     root = insertAVL(root, 40); 
-    root = insertAVL(root, 50); 
+    root = insertAVL(root, 50);  
     root = insertAVL(root, 25);
     inorderTraversal(root);
     return 0;
