@@ -16,7 +16,7 @@ int main()
         if(fuel < 0)
         {
             fuel = 0;
-            start_index = i + 1;
+            start_index = i + 1;    
         }
     }
     if(total < 0)
