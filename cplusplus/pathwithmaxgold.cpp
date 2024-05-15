@@ -40,6 +40,6 @@ int main()
             }
         }
     }
-    cout << max_gold << endl;
+    // cout << max_gold << endl;
     return max_gold;
 }
