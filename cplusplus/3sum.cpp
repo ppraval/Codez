@@ -6,6 +6,7 @@ int main()
     vector<int> nums = {-1,0,1,2,-1,-4};
     vector<vector<int>> ans;
     set<vector<int>> s;
+    
     sort(nums.begin(), nums.end());
     for(int i = 0; i < nums.size(); i++)
     {
