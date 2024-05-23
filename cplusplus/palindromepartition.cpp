@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
+// Make this work somehow
 bool isPalindrome(string s)
 {
     cout << "All of the strings that are coming in are = " << s << endl;
