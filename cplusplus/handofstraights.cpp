@@ -22,13 +22,16 @@ int main()
             int count = mp[i];
             for(int j = i; j < i + k; j++)
             {
+                cout << j << endl;
                 if(mp[j] < count)
                 {
+                    cout << "this is the selected j " << j << endl;
                     cout << false;
                     return false;
                 }
                 mp[j] -= count;
             }
+            cout << endl;
         }
     }
     cout << true;
