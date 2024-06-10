@@ -14,7 +14,7 @@ int main()
         {
             curr_sum = 0;
         }
+        cout << max_sum << endl;
     }
-    // cout << max_sum;
     return max_sum;
 }
