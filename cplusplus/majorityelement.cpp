@@ -3,23 +3,26 @@ using namespace std;
 
 int main()
 {
-    vector<int> a = {3, 2, 3};
-    int element = a[0];
+    vector<int> a = {3,2,3};
+    int val = a[0];
     int count = 0;
     for(int i = 0; i < a.size(); i++)
-    {   
+    {
+        cout << count << endl;  
+        cout << i << " " << val << endl;
         if(count == 0)
         {
-            element = a[i];
+            val = a[i];
         }
-        if(element == a[i])
+        if(val == a[i])
+        {
             count++;
+        }
         else
+        {
             count--;
+        }
     }
-    cout << element;
-    return 0;
+    cout << val;
+    return val;
 }
-
-
-//REFACTOR THIS ASAP
