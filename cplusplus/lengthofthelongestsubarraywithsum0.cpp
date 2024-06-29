@@ -25,9 +25,6 @@ int main()
                 mp[sum] = i;
             }
         }
-        cout << "sum = " << sum << endl;
-        cout << "max_i = " << max_i << endl;
-        cout << "i = " << i << endl << endl;
     }
     cout << max_i;
     return max_i;
