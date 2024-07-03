@@ -13,6 +13,7 @@ int main()
     int right = height[n - 1];
     while(i <= j)
     {
+        cout << "Left = " << left << " | " << "Right = " << right << endl;
         if(left < right)
         {
             if(height[i] >= left)
