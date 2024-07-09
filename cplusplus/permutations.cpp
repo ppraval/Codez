@@ -8,10 +8,10 @@ void permu(int idx, vector<vector<int>> &ans, vector<int> v)
         ans.push_back(v);
         return;
     }
-    for(int i = idx;i < v.size();i++)
+    for(int i = idx; i < v.size();i++)
     {
         swap(v[i], v[idx]);
-        permu(idx+1, ans, v);
+        permu(idx + 1, ans, v);
         swap(v[i], v[idx]);
     }
 }
