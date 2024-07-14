@@ -1,8 +1,6 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-
-
 class Node
 {
     public:
@@ -50,7 +48,6 @@ int main()
 {
     Node* head = NULL;
     LinkedList new_list = LinkedList();
-
     head = new_list.insertNode(head, 1);
     head = new_list.insertNode(head, 2);
     head = new_list.insertNode(head, 3);
