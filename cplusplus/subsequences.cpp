@@ -17,7 +17,6 @@ void printSubsequence(string input, string output) {
 int main() {
     string output = "";
     string input = "abcd";
-    cout << "I love this gun = " << input.substr(1) << endl;
     printSubsequence(input, output);
     return 0;
 }
