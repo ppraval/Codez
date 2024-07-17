@@ -40,7 +40,7 @@ int main()
             vec.push_back(x);
     }
     for(auto x : vec)
-    {s
+    {
         if(palin(x))
         {
             count++;
