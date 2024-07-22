@@ -1,41 +1,52 @@
-
-#include <bits/stdc++.h>
+#include<bits/stdc++.h>
 using namespace std;
 
-// Helper function to find the minimum sum path from (i, j) to (0, 0) in the matrix
-int minSumPathUtil(int i, int j, vector<vector<int>> &matrix, vector<vector<int>> &dp) {
-    // Base cases
-    if (i == 0 && j == 0)
-        return matrix[0][0]; // If we are at the top-left corner, the minimum path sum is the value at (0, 0)
-    if (i < 0 || j < 0)
-        return INT_MAX; // If we go out of bounds, return a large value to avoid considering this path
-    if (dp[i][j] != -1)
-        return dp[i][j]; // If the result is already computed, return it
-
-    // Calculate the minimum sum path by considering moving up and moving left
-    int up = matrix[i][j] + minSumPathUtil(i - 1, j, matrix, dp);
-    int left = matrix[i][j] + minSumPathUtil(i, j - 1, matrix, dp);
-
-    // Store the result in the DP table and return it
-    return dp[i][j] = min(up, left);
+bool rec(int i, int k, vector<int> nums, vector<vector<int>> &dp)
+{
+    if(k == 0)
+    {
+        // cout << "Target has been found" << endl;
+        return true;
+    }
+    if(i == 0)
+    {
+        // cout << "does " << nums[i] << " = " << k << "? ~ " << (nums[i] == k) << endl;
+        return nums[0] == k;
+    }
+    if(dp[i][k] != -1)
+        return dp[i][k];
+    // cout << "no take starts from ~ " << nums[i] << endl;
+    bool no_take = rec(i - 1, k, nums, dp);
+    bool take = false;
+    if(nums[i] <= k)
+    {
+        // cout << "take starts from ~ " << nums[i] << endl;
+        bool take = rec(i - 1, k - nums[i], nums, dp);
+    }
+    // cout << nums[i] << "~" << k  << " take = " << take << " no take = " << no_take << "\n";
+    return dp[i][k] = no_take or take;
 }
 
-// Main function to find the minimum sum path in the matrix
-int minSumPath(int n, int m, vector<vector<int>> &matrix) {
-    vector<vector<int>> dp(n, vector<int>(m, -1)); // DP table to memoize results
-    return minSumPathUtil(n - 1, m - 1, matrix, dp); // Start from the bottom-right corner
-}
-
-int main() {
-    vector<vector<int>> matrix{
-        {5, 9, 6},
-        {11, 5, 2}
-    };
-
-    int n = matrix.size();
-    int m = matrix[0].size();
-
-    cout << "Minimum sum path: " << minSumPath(n, m, matrix) << endl;
+int main()
+{
+    vector<int> nums = {1,2,3,4};
+    int k = 4;
+    vector<vector<int>> dp(nums.size(), vector<int> (k + 1, -1));
+    cout << rec(nums.size() - 1, k, nums, dp) << endl;
+    cout << "k = ";
+    for(int i = 0; i < k + 1; i++)
+    {
+        cout << i << " ";
+    }
+    cout << endl;
+    for(int i = 0; i < nums.size(); i++)
+    {
+        cout << i << " ";
+        for(int j = 0; j < k + 1; j++)
+        {
+            cout << dp[i][j] << " ";
+        }
+        cout << endl;
+    }
     return 0;
 }
-
