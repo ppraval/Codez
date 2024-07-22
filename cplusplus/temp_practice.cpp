@@ -1,52 +1,48 @@
-#include<bits/stdc++.h>
+
+#include <bits/stdc++.h>
 using namespace std;
 
-bool rec(int i, int k, vector<int> nums, vector<vector<int>> &dp)
-{
-    if(k == 0)
-    {
-        // cout << "Target has been found" << endl;
-        return true;
+// Function to solve the unbounded knapsack problem
+int knapsackUtil(vector<int>& wt, vector<int>& val, int ind, int W, vector<vector<int>>& dp) {
+    // Base case: if we're at the first item
+    if (ind == 0) {
+        // Calculate and return the maximum value for the given weight limit
+        return (W / wt[0]) * val[0];
     }
-    if(i == 0)
-    {
-        // cout << "does " << nums[i] << " = " << k << "? ~ " << (nums[i] == k) << endl;
-        return nums[0] == k;
-    }
-    if(dp[i][k] != -1)
-        return dp[i][k];
-    // cout << "no take starts from ~ " << nums[i] << endl;
-    bool no_take = rec(i - 1, k, nums, dp);
-    bool take = false;
-    if(nums[i] <= k)
-    {
-        // cout << "take starts from ~ " << nums[i] << endl;
-        bool take = rec(i - 1, k - nums[i], nums, dp);
-    }
-    // cout << nums[i] << "~" << k  << " take = " << take << " no take = " << no_take << "\n";
-    return dp[i][k] = no_take or take;
+    
+    // If the result for this index and weight limit is already calculated, return it
+    if (dp[ind][W] != -1)
+        return dp[ind][W];
+        
+    // Calculate the maximum value without taking the current item
+    int notTaken = 0 + knapsackUtil(wt, val, ind - 1, W, dp);
+    
+    // Calculate the maximum value by taking the current item
+    int taken = INT_MIN;
+    if (wt[ind] <= W)
+        taken = val[ind] + knapsackUtil(wt, val, ind, W - wt[ind], dp);
+        
+    // Store the maximum value in the DP table and return it
+    return dp[ind][W] = max(notTaken, taken);
 }
 
-int main()
-{
-    vector<int> nums = {1,2,3,4};
-    int k = 4;
-    vector<vector<int>> dp(nums.size(), vector<int> (k + 1, -1));
-    cout << rec(nums.size() - 1, k, nums, dp) << endl;
-    cout << "k = ";
-    for(int i = 0; i < k + 1; i++)
-    {
-        cout << i << " ";
-    }
-    cout << endl;
-    for(int i = 0; i < nums.size(); i++)
-    {
-        cout << i << " ";
-        for(int j = 0; j < k + 1; j++)
-        {
-            cout << dp[i][j] << " ";
-        }
-        cout << endl;
-    }
-    return 0;
+// Function to solve the unbounded knapsack problem
+int unboundedKnapsack(int n, int W, vector<int>& val, vector<int>& wt) {
+    vector<vector<int>> dp(n, vector<int>(W + 1, -1)); // Create a DP table
+    
+    // Call the utility function to calculate the maximum value
+    return knapsackUtil(wt, val, n - 1, W, dp);
 }
+
+int main() {
+    vector<int> wt = {2, 4, 6}; // Weight of items
+    vector<int> val = {5, 11, 13}; // Value of items
+    int W = 10; // Weight capacity of the knapsack
+    int n = wt.size(); // Number of items
+    
+    // Call the function to calculate and output the maximum value the thief can steal
+    cout << "The Maximum value of items the thief can steal is " << unboundedKnapsack(n, W, val, wt) << endl;
+
+    return 0; // Return 0 to indicate successful program execution
+}
+

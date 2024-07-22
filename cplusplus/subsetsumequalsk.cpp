@@ -13,7 +13,6 @@ bool rec(int i, int tar, vector<int> arr, vector<vector<int>> &dp)
     bool Taken = 0;
     if(arr[i] <= tar)
         Taken = rec(i - 1, tar - arr[i], arr, dp);
-
     return dp[i][tar] = notTaken or Taken;
 }
 
