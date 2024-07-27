@@ -1,51 +1,26 @@
 #include<bits/stdc++.h>
 using namespace std;
 
-bool isVowel(char ch)
-{
-    switch(ch)
-    {
-        case 'a':
-        case 'e':
-        case 'i':
-        case 'o':
-        case 'u':
-        case 'A':
-        case 'E':
-        case 'I':
-        case 'O':
-        case 'U':
-            return true;
-        default :
-            return false;
-    }
-    
-}
-
-
 int main()
 {
-    string s = "hellow";
-    int n = s.size();
-    stack<char> stack;
-    for(int i = 0; i < n; i++)
+    string s = "hello";
+    string v = "";
+    for(int i = 0; i < s.length(); i++)
     {
-        if(isVowel(s[i]))
+        if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')
         {
-            stack.push(s[i]);
+            v += s[i];
         }
     }
-    for(int i = 0; i < n; i++)
+    reverse(v.begin(), v.end());
+    int j = 0;
+    for(int i = 0; i < s.length(); i++)
     {
-        if(isVowel(s[i]))
+        if(s[i] == 'a' || s[i] == 'e' || s[i] == 'i' || s[i] == 'o' || s[i] == 'u')
         {
-            s[i] = stack.top();
-            stack.pop();
+            s[i] = v[j++];
         }
     }
-    for(int i = 0; i < n; i++)
-    {
-        cout << s[i];
-    }
+    cout << s << endl;
     return 0;
 }
