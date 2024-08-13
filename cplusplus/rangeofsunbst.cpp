@@ -1,7 +1,7 @@
 #include<bits/stdc++.h>
 using namespace std;
 
- void inorder(TreeNode* root, vector<int>& nums)
+void inorder(TreeNode* root, vector<int>& nums)
 {
     if(root == NULL)
     {
