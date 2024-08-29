@@ -22,7 +22,6 @@ void subset(vector<int> nums, vector<int> set, vector<vector<int>>& ans, int ind
     subset(nums, set, ans, index + 1);
 }
 
-
 int main()
 {
     vector<int> nums = {1, 2, 3};
