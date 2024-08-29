@@ -11,6 +11,8 @@ int main()
     vector<int> a = {1,6,5,4,1};
     int res = 0;
     bool flag = 0;
+    if(a[0] <= r)
+        return 0;
     for(int i = 0; i + 1 < n; i++)
     {
         int diff = a[i + 1] - a[i];
