@@ -8,12 +8,18 @@ int main()
     int n = matrix[0].size();
     for(int i = 0; i < m; i++)
     {
-        for(int j = 0;j < i; j++)
+        for(int j = 0; j < i; j++)
         {
             int x = matrix[i][j];
             matrix[i][j] = matrix[j][i];
             matrix[j][i] = x;
         }
+    }
+    for(auto v : matrix)
+    {
+        for(int i : v)
+            cout << i << " ";
+        cout << endl;
     }
     for(int i = 0;i < m;i++)
     {
