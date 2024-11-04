@@ -1,0 +1,2 @@
+SELECT * FROM movies
+WHERE rating BETWEEN 9 AND 10;

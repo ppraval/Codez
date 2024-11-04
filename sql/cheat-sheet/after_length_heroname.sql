@@ -1,0 +1,2 @@
+ALTER TABLE movies
+ALTER COLUMN hero_name VARCHAR(50);
