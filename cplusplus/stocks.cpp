@@ -3,6 +3,7 @@ using namespace std;
 
 int main()
 {
+    //we got intp NPCI
     // vector<int> arr = {7, 10, 1, 3, 6, 9, 2};
     // vector<int> arr = {10, 9, 7, 6, 3, 2, 1};
     // int n = arr.size();
