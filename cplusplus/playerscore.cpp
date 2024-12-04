@@ -1,60 +1,57 @@
 #include <iostream>
 #include <vector>
+#include <algorithm>
+#include <climits>
 
 using namespace std;
 
-struct Player {
-    int id;
-    int distance;
-    int points;
-};
-
-void playerMove(vector<Player>& players, int playerID, int movedDistance, int thresholdDistance, int additionalPoints) {
-    for (auto& player : players) {
-        if (player.id == playerID) {
-            player.distance += movedDistance;
-            if (player.distance > thresholdDistance) {
-                player.points += additionalPoints;
+void floydWarshall(vector<vector<int>>& dist, int N) {
+    for (int k = 0; k < N; ++k) {
+        for (int i = 0; i < N; ++i) {
+            for (int j = 0; j < N; ++j) {
+                if (dist[i][k] != INT_MAX && dist[k][j] != INT_MAX) {
+                    dist[i][j] = min(dist[i][j], dist[i][k] + dist[k][j]);
+                }
             }
-            break;
         }
     }
-}
-
-int playerScore(const vector<Player>& players, int firstPlayerID, int secondPlayerID) {
-    int totalScore = 0;
-    for (const auto& player : players) {
-        if (player.id >= firstPlayerID && player.id <= secondPlayerID) {
-            totalScore += player.points;
-        }
-    }
-    return totalScore;
 }
 
 int main() {
-    int N, thresholdDistance, additionalPoints;
-    cin >> N >> thresholdDistance >> additionalPoints;
+    int N;
+    cin >> N;
+    vector<vector<int>> transmissionCost(N, vector<int>(N));
 
-    vector<Player> players(N);
     for (int i = 0; i < N; ++i) {
-        cin >> players[i].id >> players[i].distance >> players[i].points;
-    }
-
-    int Q;
-    cin >> Q;
-    for (int i = 0; i < Q; ++i) {
-        int queryType;
-        cin >> queryType;
-        if (queryType == 1) {
-            int playerID, movedDistance;
-            cin >> playerID >> movedDistance;
-            playerMove(players, playerID, movedDistance, thresholdDistance, additionalPoints);
-        } else if (queryType == 2) {
-            int firstPlayerID, secondPlayerID;
-            cin >> firstPlayerID >> secondPlayerID;
-            cout << playerScore(players, firstPlayerID, secondPlayerID) << endl;
+        for (int j = 0; j < N; ++j) {
+            cin >> transmissionCost[i][j];
+            if (i != j && transmissionCost[i][j] == 0) {
+                transmissionCost[i][j] = INT_MAX;
+            }
         }
     }
+
+    int M;
+    cin >> M;
+    for (int i = 0; i < M; ++i) {
+        int firstDevice, secondDevice, cost;
+        cin >> firstDevice >> secondDevice >> cost;
+        transmissionCost[firstDevice - 1][secondDevice - 1] = min(transmissionCost[firstDevice - 1][secondDevice - 1], cost);
+        transmissionCost[secondDevice - 1][firstDevice - 1] = min(transmissionCost[secondDevice - 1][firstDevice - 1], cost);
+    }
+
+    floydWarshall(transmissionCost, N);
+
+    long long sum = 0;
+    for (int i = 0; i < N; ++i) {
+        for (int j = i + 1; j < N; ++j) {
+            if (transmissionCost[i][j] != INT_MAX) {
+                sum += transmissionCost[i][j];
+            }
+        }
+    }
+
+    cout << sum << endl;
 
     return 0;
 }
