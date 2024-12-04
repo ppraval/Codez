@@ -9,15 +9,15 @@ struct Edge {
     int u, v, cost;
 };
 
-int find(int parent[], int i) {
+int findParent(vector<int> parent, int i) {
     if (parent[i] == i)
         return i;
-    return parent[i] = find(parent, parent[i]);
+    return parent[i] = findParent(parent, parent[i]);
 }
 
-void unionSets(int parent[], int rank[], int x, int y) {
-    int rootX = find(parent, x);
-    int rootY = find(parent, y);
+void unionSets(vector<int> parent, vector<int> rank, int x, int y) {
+    int rootX = findParent(parent, x);
+    int rootY = findParent(parent, y);
 
     if (rank[rootX] < rank[rootY])
         parent[rootX] = rootY;
@@ -60,7 +60,7 @@ int main() {
         int v = e.v;
         int cost = e.cost;
 
-        if (find(parent, u) != find(parent, v)) {
+        if (findParent(parent, u) != findParent(parent, v)) {
             minCost += cost;
             unionSets(parent, rank, u, v);
         }
