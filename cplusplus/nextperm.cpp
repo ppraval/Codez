@@ -3,7 +3,7 @@ using namespace std;
 
 int main()
 {
-    vector<int> v = {1,2,3};
+    vector<int> v = {1,2,3,4};
     next_permutation(begin(v), end(v));
     for(int i : v)
         cout << i << " ";
