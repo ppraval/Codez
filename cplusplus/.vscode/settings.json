@@ -9,6 +9,7 @@
         "initializer_list": "cpp",
         "list": "cpp",
         "xutility": "cpp",
-        "iosfwd": "cpp"
+        "iosfwd": "cpp",
+        "bitset": "cpp"
     }
 }
