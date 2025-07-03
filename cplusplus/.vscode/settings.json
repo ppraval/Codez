@@ -10,6 +10,7 @@
         "list": "cpp",
         "xutility": "cpp",
         "iosfwd": "cpp",
-        "bitset": "cpp"
+        "bitset": "cpp",
+        "xiosbase": "cpp"
     }
 }
