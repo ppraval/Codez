@@ -12,6 +12,7 @@
         "iosfwd": "cpp",
         "bitset": "cpp",
         "xiosbase": "cpp",
-        "utility": "cpp"
+        "utility": "cpp",
+        "stack": "cpp"
     }
 }
