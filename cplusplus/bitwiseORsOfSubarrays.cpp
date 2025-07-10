@@ -15,7 +15,22 @@ int main()
         {
             next.insert(x | num);
         }
+
+        cout << "cur" << "\n";
+
+        for(auto x : cur) 
+        {
+            cout << x << " ";
+        }
+        cout << endl;
+        
         cur = move(next);
+        cout << "next" << "\n";
+        for(auto x : cur) 
+        {
+            cout << x << " ";
+        }
+        cout << endl << endl;
         res.insert(cur.begin(), cur.end());
     }
     cout << "Number of unique bitwise ORs: ";
