@@ -13,6 +13,8 @@
         "bitset": "cpp",
         "xiosbase": "cpp",
         "utility": "cpp",
-        "stack": "cpp"
+        "stack": "cpp",
+        "ios": "cpp",
+        "type_traits": "cpp"
     }
 }
