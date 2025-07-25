@@ -7,6 +7,7 @@ int main()
     int *ptr_a = &a; // Pointer to a
     int *ptr_b = &b; // Pointer to b
     cout << ptr_a - ptr_b << endl;
+    cout << (int*)ptr_a - (int*)ptr_b << endl;
     cout << (char*)ptr_a - (char*)ptr_b << endl;
     return 0;
 }
