@@ -43,6 +43,55 @@ STANDALONE_PATTERNS = [
 # Standard A4/Letter page is ~842pt tall; 70pt covers ~2.5 cm.
 FOOTER_HEIGHT_PT = 70
 
+DEST_ROOT = r"./reports_tosend"
+def get_next_case_folder():
+    os.makedirs(DEST_ROOT, exist_ok=True)
+
+    nums = [
+        int(name) for name in os.listdir(DEST_ROOT)
+        if name.isdigit()
+    ]
+
+    next_id = max(nums) + 1 if nums else 1
+    folder = f"{next_id:04d}"
+
+    path = os.path.join(DEST_ROOT, folder)
+    os.makedirs(path)
+
+    return path
+
+
+import shutil
+def copy_case_files(input_pdf, redacted_pdf):
+    source_folder = os.path.dirname(input_pdf)
+
+    case_folder = get_next_case_folder()
+
+    for file in os.listdir(source_folder):
+
+        src = os.path.join(source_folder, file)
+
+        # skip original PDF
+        if os.path.abspath(src) == os.path.abspath(input_pdf):
+            continue
+
+        # skip redacted PDF (we will copy it later once)
+        if os.path.abspath(src) == os.path.abspath(redacted_pdf):
+            continue
+
+        if os.path.isfile(src):
+            dst = os.path.join(case_folder, file)
+            shutil.copy2(src, dst)
+
+    # copy redacted pdf
+    shutil.copy2(
+        redacted_pdf,
+        os.path.join(case_folder, os.path.basename(redacted_pdf))
+    )
+
+    print(f"Copied case to: {case_folder}")
+
+
 
 def redact_header_values(page: fitz.Page) -> int:
     """
@@ -87,6 +136,8 @@ def redact_header_values(page: fitz.Page) -> int:
             'visit date'   in t,
             'referred by'  in t,
             'performed by' in t,
+            'ugi number'   in t,
+            'ogd number'   in t,
         ])
 
     count = 0
@@ -170,13 +221,17 @@ def redact_page(page: fitz.Page) -> int:
     """
     # 1. Header fields — word-level, handles two-column layout
     count = redact_header_values(page)
+    print("count:", count)
 
     # 2. Standalone patterns for anything outside the header
     page_text = page.get_text("text")
+    print(page_text)
     targets = extract_standalone_strings(page_text)
+    print(targets)
     standalone_count = 0
     for target in targets:
         rects = page.search_for(target, quads=False)
+        print(rects)
         for rect in rects:
             padded = fitz.Rect(rect.x0 - 2, rect.y0 - 1, rect.x1 + 2, rect.y1 + 1)
             page.add_redact_annot(padded, fill=(0, 0, 0))
@@ -201,13 +256,20 @@ def redact_pdf(input_path: str, output_path: str | None = None) -> str:
     Defaults to OUTPUT_DIR/<original_filename>.
     Returns the output path.
     """
+    
+    """
     if output_path is None:
         os.makedirs(OUTPUT_DIR, exist_ok=True)
         fname = os.path.basename(input_path)
         output_path = os.path.join(OUTPUT_DIR, fname)
-
-    doc = fitz.open(input_path)
-    total_redactions = 0
+    """
+    if output_path is None:
+        input_dir = os.path.dirname(input_path)        # folder of the input file
+        base = os.path.basename(input_path)            # filename.pdf
+        name, ext = os.path.splitext(base)             # filename + .pdf
+        output_path = os.path.join(input_dir, f"{name}_redacted{ext}")
+        doc = fitz.open(input_path)
+        total_redactions = 0
 
     for page_num, page in enumerate(doc, start=1):
         n = redact_page(page)
@@ -239,5 +301,9 @@ if __name__ == "__main__":
             print(f"[ERROR] File not found: {input_file}\n")
             continue
         print(f"Redacting: {input_file}")
-        redact_pdf(input_file)
+
+        redacted_path = redact_pdf(input_file)
+
+        copy_case_files(input_file, redacted_path)
+
         print()
